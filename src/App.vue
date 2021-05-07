@@ -1,7 +1,9 @@
 <template>
   <div id="app">
+    <el-menu>
+      FWTALK
+    </el-menu>
     <router-view/>
-
   </div>
 </template>
 
