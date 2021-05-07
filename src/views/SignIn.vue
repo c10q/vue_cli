@@ -1,9 +1,9 @@
 <template>
-  <div>
-    id: <input type="text" v-model="email">
-    password: <input type="text" v-model="password">
-    <button @click="signIn">SIGN IN</button>
-  </div>
+  <el-card>
+    id: <el-input type="text" v-model="email" />
+    password: <el-input type="text" v-model="password" />
+    <el-button @click="signIn">SIGN IN</el-button>
+  </el-card>
 </template>
 
 <script>
