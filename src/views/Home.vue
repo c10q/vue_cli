@@ -31,6 +31,7 @@ export default {
         {message: '인사동'},
         {message: '조계사'},
         {message: '해먹'},
+        {message: '청계천'},
       ]
     }
   }
