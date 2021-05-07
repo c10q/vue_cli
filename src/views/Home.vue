@@ -6,7 +6,7 @@
 
     <ul>
       <li v-for="(item, index) in items" v-bind:key="index" v-on:click="sub">
-        {{ item.message }}
+        {{ item.message}}
       </li>
     </ul>
   </div>
