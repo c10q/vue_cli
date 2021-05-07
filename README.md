@@ -1,29 +1,17 @@
 # jest_project
 
-## Project setup
+## 프로젝트 세팅
 ```
 yarn install
 ```
 
-### Compiles and hot-reloads for development
+### 개발 컴파일용 서버 실행
 ```
 yarn serve
 ```
 
-### Compiles and minifies for production
-```
-yarn build
-```
+### 데이터베이스
+[Firebase Firestore](https://console.firebase.google.com/project/fwtalk/firestore/)
 
-### Run your unit tests
-```
-yarn test:unit
-```
-
-### Lints and fixes files
-```
-yarn lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+### 유저 정보
+[Firebase Authentication](https://console.firebase.google.com/project/fwtalk/authentication/users)
