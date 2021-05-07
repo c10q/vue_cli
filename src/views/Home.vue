@@ -1,11 +1,12 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <!--img alt="Vue logo" src="../assets/logo.png"-->
+    <button><router-link to="/about">누르세요</router-link></button>
+      <div><el-radio v-model="radio" label="1">강의듣는다</el-radio>
+      <el-radio v-model="radio" label="2">안듣는다</el-radio></div>
     <input type="text" v-model="msg">
-
     <ul>
-      <li v-for="(item, index) in items" v-bind:key="index" v-on:click="sub">
+      <li v-for="(item, index) in items" v-bind:key="index">
         {{ item.message }}
       </li>
     </ul>
@@ -13,28 +14,34 @@
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
 
 export default {
   name: 'Home',
   components: {
-    HelloWorld
+    
   },
   computed: {},
   watch: {},
   data() {
     return {
-      msg: 'okay',
+      radio: '1',
+      msg: '오늘 놀러 갈 곳',
       items: [
-        {message: 'Foo'},
-        {message: 'Bar1'},
-        {message: 'Bar2'},
-        {message: 'Bar3'},
+        {message: '남산'},
+        {message: '인사동'},
+        {message: '조계사'},
+        {message: '해먹'},
       ]
     }
   }
 }
 </script>
 
-<style></style>
+<style>
+*{
+  margin: 7px;
+}
+li{
+  list-style: none;
+}
+</style>

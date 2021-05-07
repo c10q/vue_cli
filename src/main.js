@@ -5,7 +5,8 @@ import store from './store'
 import 'firebase/auth'
 import "firebase/firestore";
 import firebase from "firebase";
-
+import ElementUI from 'element-ui';
+import 'element-ui/lib/theme-chalk/index.css';
 Vue.config.productionTip = false
 
 let firebaseConfig = {
@@ -20,7 +21,7 @@ let firebaseConfig = {
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 firebase.analytics();
-
+Vue.use(ElementUI);
 new Vue({
   router,
   store,

@@ -1,5 +1,6 @@
 <template>
   <div class="about">
-    <h1>This is an about page</h1>
+    <router-link to="/">	&lt;	&lt;</router-link>
+    <h1>뒤로 돌아가세요</h1>
   </div>
 </template>
