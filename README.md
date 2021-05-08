@@ -1,4 +1,4 @@
-# jest_project
+# FWTALK
 
 ## 프로젝트 세팅
 ```
