@@ -1,10 +1,25 @@
 <template>
   <el-card>
-    <span>ID</span>
-    <el-input type="text" placeholder="ID" v-model="email"/>
+    <h2 class="sign-up-title">REGISTER</h2>
 
-    <span>PW</span>
-    <el-input type="password" placeholder="PASSWORD" v-model="password"/>
+    <div>
+      <span>Email</span>
+      <el-input type="text" v-model="email" class="sign-up-input"/>
+    </div>
+
+    <div>
+      <span>Password</span>
+      <el-input type="password" v-model="password" class="sign-up-input"/>
+    </div>
+
+    <div>
+      <span>Gender</span>
+      <el-radio-group v-model="gender">
+        <el-radio :label="1">여자</el-radio>
+        <el-radio :label="2">남자</el-radio>
+      </el-radio-group>
+    </div>
+
     <!-- @click 은 클릭 이벤트인데 아래 signUp 함수를 호출하겠다는 말입니다 -->
     <!-- signUp() 으로 써도 되고 전달할 인수가 없다면 그냥 signUp 이라고만 써도 돼요 -->
     <!-- <el-button @click="signUp()">회원가입</el-button> 이렇게 -->
@@ -22,6 +37,7 @@ export default {
     return {
       email: '', // Todo 회원가입 전 이메일 폼 체크
       password: '', // Todo 패스워드 6글자 미만이면 경고 Alert
+      gender: 1,
     }
   },
   methods: {
@@ -61,5 +77,13 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
+.sign-up-title {
+  margin-bottom: 32px;
+}
+
+.sign-up-input {
+  width: 95%;
+  margin: 0;
+}
 </style>
