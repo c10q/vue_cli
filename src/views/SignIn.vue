@@ -1,9 +1,24 @@
 <template>
   <el-card>
-    id: <el-input type="text" v-model="email" />
-    password: <el-input type="password" v-model="password" />
-    <el-button @click="signIn">SIGN IN</el-button>
-    <el-button @click="signOut">SIGN OUT</el-button>
+    <h2 class="sign-in-title">LOGIN</h2>
+
+    <div>
+      <span>EMAIL</span>
+      <el-input type="text" v-model="email" class="sign-up-input"/>
+    </div>
+
+    <div>
+      <span>PASSWORD</span>
+      <el-input type="password" v-model="password" class="sign-up-input"/>
+    </div>
+
+    <el-divider />
+
+    <div class="sign-in-button-group">
+      <el-button @click="signOut">회원가입</el-button>
+      <el-button @click="signIn" type="primary">로그인</el-button>
+    </div>
+
   </el-card>
 </template>
 
@@ -47,9 +62,9 @@ export default {
       firebase.auth().onAuthStateChanged((user) => {
         if (user) {
           let uid = user.uid
-          alert(uid + '유저가 접속중이다')
+          console.log(uid + '유저가 접속중이다')
         } else {
-          alert('로그인 된 사람이 없다')
+          console.log('로그인 된 사람이 없다')
         }
       });
     }
@@ -58,5 +73,17 @@ export default {
 </script>
 
 <style scoped>
+.sign-in-title {
+  margin-bottom: 32px;
+}
 
+.sign-up-input {
+  width: 95%;
+  margin: 0;
+}
+
+.sign-in-button-group {
+  display: flex;
+  justify-content: flex-end;
+}
 </style>
