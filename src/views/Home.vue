@@ -13,12 +13,15 @@
         {{ item.message }}
       </li>
     </ul>
-    <el-button @click="signUp">SIGNUP</el-button>
-    <el-button @click="signIn" type="primary">SIGNIN</el-button>
+    <el-button @click="signOut">
+      로그아웃
+    </el-button>
   </div>
 </template>
 
 <script>
+
+import firebase from "firebase";
 
 export default {
   name: 'Home',
@@ -47,6 +50,11 @@ export default {
     },
     signUp() {
       this.$router.push('/signUp')
+    },
+    signOut() {
+      firebase.auth().signOut().then(() => {
+        this.$router.replace('/signIn')
+      })
     }
   }
 }
