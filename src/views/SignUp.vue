@@ -30,6 +30,7 @@
 
 <script>
 import firebase from 'firebase' // 파이어베이스 사용
+import db from '../firestore' // 데이터베이스 사용
 
 export default {
   name: 'SignUp',
@@ -58,7 +59,6 @@ export default {
           });
     },
     saveInfo(user) {
-      let db = firebase.firestore() // 데이터베이스 쓰겠다고 선언
       let now = new Date // 현재의 Date 객체를 생성
 
       db.collection("users").add({ // 데이터베이스 (users 폴더) 에 추가
