@@ -5,6 +5,7 @@ import SignUp from "../views/SignUp"
 import SignIn from "../views/SignIn"
 import Match from "../views/Match"
 import About from "../views/About"
+import Chat from "../views/Chat"
 import firebase from "firebase"
 import Settings from "../views/Settings";
 
@@ -43,6 +44,12 @@ const routes = [
     path: '/settings',
     name: 'Settings',
     component: Settings,
+    meta: {requireAuth: true}
+  },
+  {
+    path: '/chat',
+    name: 'Chat',
+    component: Chat,
     meta: {requireAuth: true}
   }
 ]
