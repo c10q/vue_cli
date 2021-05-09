@@ -1,38 +1,28 @@
 <template>
   <div class="home">
-    <button>
-      <router-link to="/about">누르세요</router-link>
-    </button>
-    <button>
-      <router-link to="/settings">설정</router-link>
-    </button>
-    <div>
-      <el-radio v-model="radio" label="1">강의듣는다</el-radio>
-      <el-radio v-model="radio" label="2">안듣는다</el-radio>
-    </div>
-    <input type="text" v-model="msg">
-    <ul>
-      <li v-for="(item, index) in items" v-bind:key="index">
-        {{ item.message }}
-      </li>
-    </ul>
+    <p>{{ userMail }}</p>
+    <el-button @click="signOut">로그아웃</el-button>
+    <el-button @click="chat">채팅방</el-button>
   </div>
 </template>
 
 <script>
 
+import firebase from "firebase"; 
+
 export default {
   name: 'Home',
   data() {
+    const user = firebase.auth().currentUser;
     return {
       radio: '1',
-      msg: '오늘 놀러 갈 곳',
+      userMail: user.email,
       items: [
-        {message: '남산'},
-        {message: '인사동'},
-        {message: '조계사'},
-        {message: '해먹'},
-        {message: '청계천'},
+        {message: ''},
+        {message: ''},
+        {message: ''},
+        {message: ''},
+        {message: ''},
       ]
     }
   },
@@ -49,6 +39,14 @@ export default {
     signUp() {
       this.$router.push('/signUp')
     },
+    chat() {
+      this.$router.push('/chat')
+    },
+    signOut() {
+      firebase.auth().signOut().then(() => {
+        this.$router.replace('/signIn')
+      })
+    }
   }
 }
 </script>
