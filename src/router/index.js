@@ -6,6 +6,7 @@ import SignIn from "../views/SignIn"
 import Match from "../views/Match"
 import About from "../views/About"
 import firebase from "firebase"
+import Settings from "../views/Settings";
 
 Vue.use(VueRouter)
 
@@ -36,6 +37,12 @@ const routes = [
     path: '/about',
     name: 'About',
     component: About,
+    meta: {requireAuth: true}
+  },
+  {
+    path: '/settings',
+    name: 'Settings',
+    component: Settings,
     meta: {requireAuth: true}
   }
 ]

@@ -3,6 +3,9 @@
     <button>
       <router-link to="/about">누르세요</router-link>
     </button>
+    <button>
+      <router-link to="/settings">설정</router-link>
+    </button>
     <div>
       <el-radio v-model="radio" label="1">강의듣는다</el-radio>
       <el-radio v-model="radio" label="2">안듣는다</el-radio>
@@ -13,15 +16,10 @@
         {{ item.message }}
       </li>
     </ul>
-    <el-button @click="signOut">
-      로그아웃
-    </el-button>
   </div>
 </template>
 
 <script>
-
-import firebase from "firebase";
 
 export default {
   name: 'Home',
@@ -51,11 +49,6 @@ export default {
     signUp() {
       this.$router.push('/signUp')
     },
-    signOut() {
-      firebase.auth().signOut().then(() => {
-        this.$router.replace('/signIn')
-      })
-    }
   }
 }
 </script>
