@@ -19,6 +19,16 @@
       <el-button @click="signIn" type="primary">로그인</el-button>
     </div>
 
+    <button class="sign-in-google-button" @click="signInWithGoogle">
+      <img src="../assets/google_logo.png" alt="google-login">
+      Google 계정으로 로그인
+    </button>
+
+    <button class="sign-in-facebook-button" @click="signInWithFacebook">
+      <img src="../assets/facebook_logo.png" alt="facebook-login">
+      Facebook 계정으로 로그인
+    </button>
+
   </el-card>
 </template>
 
@@ -46,7 +56,7 @@ export default {
             let errorCode = error.code
             let errorMessage = error.message
 
-            switch(errorCode) {
+            switch (errorCode) {
               case 'auth/invalid-email':
                 this.$message({
                   message: '이메일 형식을 확인해주세요',
@@ -70,7 +80,50 @@ export default {
           });
     },
     signUp() {
-      this.$router.push({name: 'SignUp'}).catch(() => {})
+      this.$router.push({name: 'SignUp'}).catch(() => {
+      })
+    },
+    signInWithGoogle() {
+      let provider = new firebase.auth.GoogleAuthProvider()
+      firebase
+          .auth()
+          .signInWithPopup(provider)
+          .then((result) => {
+
+            let user = result.user
+            console.log(user.email)
+
+            this.$router.push({name: 'Home'})
+          })
+          .catch((error) => {
+            console.log({
+              'errorCode': error.code,
+              'errorMessage': error.message,
+              'email': error.email,
+              'credential': error.credential
+            })
+          })
+    },
+    signInWithFacebook() {
+      let provider = new firebase.auth.FacebookAuthProvider()
+      firebase
+          .auth()
+          .signInWithPopup(provider)
+          .then((result) => {
+
+            let user = result.user
+            console.log(user.email)
+
+            this.$router.push({name: 'Home'})
+          })
+          .catch((error) => {
+            console.log({
+              'errorCode': error.code,
+              'errorMessage': error.message,
+              'email': error.email,
+              'credential': error.credential
+            })
+          });
     }
   }
 }
@@ -89,5 +142,50 @@ export default {
 .sign-in-button-group {
   display: flex;
   justify-content: flex-end;
+  margin-bottom: 32px;
 }
+
+.sign-in-google-button {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 48px;
+
+  border: 1px solid lavender;
+  border-radius: 8px;
+
+  background-color: white;
+}
+
+.sign-in-google-button img {
+  width: 100%;
+  height: 100%;
+  margin: 8px;
+  max-width: 32px;
+  max-height: 32px;
+}
+
+.sign-in-facebook-button {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 48px;
+
+  color: white;
+
+  border: 1px solid #4267B2;
+  border-radius: 8px;
+
+  background-color: #4267B2;
+}
+
+.sign-in-facebook-button img {
+  width: 100%;
+  height: 100%;
+  padding: 4px;
+  margin: 8px;
+  max-width: 24px;
+  max-height: 24px;
+}
+
 </style>
