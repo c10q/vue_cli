@@ -23,8 +23,8 @@
     <!-- @click 은 클릭 이벤트인데 아래 signUp 함수를 호출하겠다는 말입니다 -->
     <!-- signUp() 으로 써도 되고 전달할 인수가 없다면 그냥 signUp 이라고만 써도 돼요 -->
     <!-- <el-button @click="signUp()">회원가입</el-button> 이렇게 -->
-    <el-button @click="signUp">회원가입</el-button>
-
+    <el-button @click="signUp">가입하기</el-button>
+    <el-button @click="signIn">로그인</el-button>
   </el-card>
 </template>
 
@@ -36,8 +36,8 @@ export default {
   name: 'SignUp',
   data() {
     return {
-      email: '', // Todo 회원가입 전 이메일 폼 체크
-      password: '', // Todo 패스워드 6글자 미만이면 경고 Alert
+      email: '',
+      password: '',
       gender: 1,
     }
   },
@@ -57,6 +57,9 @@ export default {
             console.log(errorCode)
             console.log(errorMessage)
           });
+    },
+    signIn() {
+      this.$router.push({name: 'SignIn'}).catch(() => {})
     },
     saveInfo(user) {
       let now = new Date // 현재의 Date 객체를 생성
