@@ -1,9 +1,8 @@
 <template>
     <el-card>
-        <div style="text-align:right"><p>메시지를 남겨 주세요</p></div>
-        <div style="text-align:right"><p>메시지를 남겨 주세요</p></div>
-        <div><p>메시지를 남겨 주세요</p></div>  
-        <div><p>메시지를 남겨 주세요</p></div>
+        <div v-for="(chat, i) in chats" :key="i" :style="[chat.uid === 1 ? {'text-align' : 'right'} : {}]">
+          <p>{{chat.message}}</p>
+        </div>
         <div id="input-bar">
             <el-input type="text" v-model="msg" class="chat-input"/>
             <el-button>send</el-button>
@@ -16,7 +15,15 @@ export default {
   name: "Chat",
   data() {
       return{
-        msg: ""
+        msg: "",
+        chats: [
+          {uid: 1, message: '안녕~ 안녕~ 핑크퐁'},
+          {uid: 1, message: '워우워우워우워어'},
+          {uid: 2, message: '아기 상어~'},
+          {uid: 2, message: '뚜루루뚜루'},
+          {uid: 1, message: '귀여운~'},
+          {uid: 2, message: '뚜루루뚜루~'},
+        ]
       }
   }
 }
