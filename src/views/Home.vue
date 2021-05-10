@@ -1,20 +1,35 @@
 <template>
-  <div class="home">
-    <p>{{ userMail }}</p>
-    <el-button @click="signOut">로그아웃</el-button>
-    <el-button @click="chat">채팅방</el-button>
-  </div>
+  <el-card>
+    <h2>
+      매칭 조건
+    </h2>
+
+    <div style="margin-bottom: 40px">
+      <el-radio-group v-model="gender">
+        <el-radio :label="0">무작위</el-radio>
+        <el-radio :label="1">여자만</el-radio>
+        <el-radio :label="2">남자만</el-radio>
+      </el-radio-group>
+    </div>
+
+    <div class="chat-start">
+      <button>
+        시작하기
+      </button>
+    </div>
+  </el-card>
 </template>
 
 <script>
 
-import firebase from "firebase"; 
+import firebase from "firebase";
 
 export default {
   name: 'Home',
   data() {
     const user = firebase.auth().currentUser;
     return {
+      gender: 0,
       radio: '1',
       userMail: user.email,
       items: [
@@ -58,5 +73,14 @@ export default {
 
 li {
   list-style: none;
+}
+
+.chat-start button {
+  width: 100%;
+  padding: 12px;
+  color: #e5e5e5;
+  background-color: mediumpurple;
+  border: 1px solid lavender;
+  border-radius: 24px;
 }
 </style>

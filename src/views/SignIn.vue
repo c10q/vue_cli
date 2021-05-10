@@ -34,6 +34,7 @@
 
 <script>
 import firebase from "firebase"
+import db from "../firestore";
 
 export default {
   name: "SignIn",
@@ -91,7 +92,19 @@ export default {
           .then((result) => {
 
             let user = result.user
-            console.log(user.email)
+
+            db.collection('users').doc(user.uid).get() // 데이터베이스에 유저가 없으면 정보 추가
+                .then((doc) => {
+                  if (!doc.exists) {
+                    db.collection('users').doc(user.uid).set({
+                      email: user.email,
+                      gender: 0
+                    })
+                  }
+                })
+                .catch((error) => {
+                  console.log("데이터베이스 가져오기 오류:", error);
+                })
 
             this.$router.push({name: 'Home'})
           })
@@ -112,7 +125,19 @@ export default {
           .then((result) => {
 
             let user = result.user
-            console.log(user.email)
+
+            db.collection('users').doc(user.uid).get() // 데이터베이스에 유저가 없으면 정보 추가
+                .then((doc) => {
+                  if (!doc.exists) {
+                    db.collection('users').doc(user.uid).set({
+                      email: user.email,
+                      gender: 0
+                    })
+                  }
+                })
+                .catch((error) => {
+                  console.log("데이터베이스 가져오기 오류:", error);
+                })
 
             this.$router.push({name: 'Home'})
           })
