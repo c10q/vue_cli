@@ -1,7 +1,7 @@
 <template>
   <div class="top-nav">
     <h2>FWTALK</h2>
-    <img src="../assets/account_circle_black_24dp.svg" alt="account" @click="showModal = true">
+    <img v-if="$route.meta.requireAuth" src="../assets/account_circle_black_24dp.svg" alt="account" @click="showModal = true">
     <modal v-if="showModal" @close="showModal = false">
       <!--
         you can use custom content here to overwrite
